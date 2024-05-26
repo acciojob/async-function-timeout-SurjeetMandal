@@ -3,12 +3,12 @@ async function displayMessage() {
     const delayInput = document.getElementById('delay').value;
     const outputDiv = document.getElementById('output');
 
-	outputDiv.innerText = ` `;
+	outputDiv.textContent = ` `;
     
     const delayMilliseconds = delayInput * 1000;
     
     await new Promise(resolve => setTimeout(() => {
-		outputDiv.innerText = textInput;
+		outputDiv.textContent = textInput;
 	}, delayMilliseconds));
 }
 
