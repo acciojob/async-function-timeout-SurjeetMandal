@@ -1,18 +1,18 @@
-let textInput = document.getElementById('text');
-let delayInput = document.getElementById('delay');
-let outputDiv = document.getElementById('output');
-let btn = document.getElementById('btn');
+async function displayMessage() {
+    const textInput = document.getElementById('text').value;
+    const delayInput = document.getElementById('delay').value;
+    const outputDiv = document.getElementById('output');
 
-btn.addEventListener('click', function() {
-    let data = textInput.value;
-    let delayTime = delayInput.value;
-
-	outputDiv.innerHTML = ` `;
+	outputDiv.innerText = ` `;
     
-    setTimeout(() => {
-        outputDiv.innerHTML = data;
-    }, delayTime * 1000);
-});
+    const delayMilliseconds = delayInput * 1000;
+    
+    await new Promise(resolve => setTimeout(() => {
+		outputDiv.innerText = textInput;
+	}, delayMilliseconds));
+}
+
+document.getElementById('btn').addEventListener('click', displayMessage);
 
 
 
