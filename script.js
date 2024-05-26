@@ -1,18 +1,22 @@
-async function displayMessage() {
-    const textInput = document.getElementById('text').value;
-    const delayInput = document.getElementById('delay').value;
-    const outputDiv = document.getElementById('output');
+const textInput = document.getElementById('text');
+const delayInput = document.getElementById('delay');
+const outputDiv = document.getElementById('output');
+const submitBtn = document.getElementById('btn');
 
-	outputDiv.textContent = ` `;
-    
-    const delayMilliseconds = delayInput * 1000;
-    
-    await new Promise(resolve => setTimeout(() => {
-		outputDiv.textContent = textInput;
-	}, delayMilliseconds));
+async function displayTextWithDelay() {
+  const text = textInput.value;
+  const delay = parseInt(delayInput.value);
+
+  if (text && !isNaN(delay)) 
+  {
+    outputDiv.textContent = '';
+    setTimeout(() => {
+      outputDiv.textContent = text;
+    }, delay);
+  }
 }
 
-document.getElementById('btn').addEventListener('click', displayMessage);
+submitBtn.addEventListener('click', displayTextWithDelay);
 
 
 
